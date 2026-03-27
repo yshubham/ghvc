@@ -1,40 +1,27 @@
 # GHVC
 
-## Live URL layout (one domain)
+## Deploy as separate Amplify apps
 
-| URL | What it serves |
-|-----|----------------|
-| **`/`** | Legacy static site (`index.html`, `css/`, `images/`, …) |
-| **`/b/`** | Next.js app in **`b/`** (static export, `basePath: /b`) |
-| **`/c/`** | Next.js app in **`c/`** (static export, `basePath: /c`) |
+Use **three different apps** in the Amplify console (or any host), all pointed at **this repo**, with different **app root / monorepo path**:
 
-Pushing to the connected branch runs **`scripts/build-site.sh`**, which writes everything into **`dist/`** for Amplify.
+| Amplify app | App root (monorepo path) | Output |
+|-------------|---------------------------|--------|
+| Legacy static | **`.`** (repo root) | Upload `index.html`, `css/`, `images/`, `js/`, etc., or a build that only copies those files |
+| Next **b** | **`b`** | Standard Next.js: `npm ci` → `npm run build`, artifact **`.next`** (SSR/SSG as Amplify expects) |
+| Next **c** | **`c`** | Same as **b** |
 
-### AWS Amplify
+### Important
 
-- **`amplify.yml`** installs deps in **`b/`** and **`c/`**, runs the build script, publishes **`dist/`**.
-- This is **static hosting**: Next **`output: 'export'`** in both apps (no server-side Next on Amplify for `/b` and `/c`). Features like ISR/API routes won’t run in the cloud; your marketing sites are fully static.
+- **Do not** add a repo-root `amplify.yml` unless it matches how *every* connected Amplify app should build. A single root `amplify.yml` overrides console settings for the whole repository.
+- For **b** and **c**, set **`AMPLIFY_MONOREPO_APP_ROOT`** to **`b`** or **`c`** (Amplify usually sets this when you pick the monorepo path).
+- Recommended **Node 20** for Next 16.
 
-### Local full build
+### Local dev
 
 ```bash
-chmod +x scripts/build-site.sh
-./scripts/build-site.sh
+cd b && npm install && npm run dev
+cd c && npm install && npm run dev
 ```
-
-Open `dist/index.html` via a static server; visit `/b/` and `/c/` on the same host.
-
-### Redirects (optional, Amplify console)
-
-If `/b` or `/c` without a trailing slash misbehave, add console redirects, for example:
-
-- `/b` → `/b/` (301)  
-- `/c` → `/c/` (301)
-
-### Legacy vs Next privacy
-
-- Root: **`/privacy.html`** (legacy)  
-- Modern: **`/b/privacy`**, **`/c/privacy`**
 
 ---
 

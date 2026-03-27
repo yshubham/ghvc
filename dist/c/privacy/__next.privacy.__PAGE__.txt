@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[22016,["/c/_next/static/chunks/15me30tw1x3nj.js","/c/_next/static/chunks/141hk9ksqd6b8.js","/c/_next/static/chunks/0d3shmwh5_nmn.js"],""]
+3:I[97367,["/c/_next/static/chunks/15me30tw1x3nj.js","/c/_next/static/chunks/141hk9ksqd6b8.js","/c/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"mx-auto min-h-[70vh] max-w-2xl px-5 py-32 md:px-10","children":[["$","p",null,{"className":"text-[11px] uppercase tracking-[0.4em] text-[#737373]","children":"Legal"}],["$","h1",null,{"className":"mt-4 text-3xl font-medium tracking-tight text-[#f5f5f5] md:text-4xl","children":"Privacy notice"}],["$","p",null,{"className":"mt-8 text-sm leading-relaxed text-[#a3a3a3]","children":"Placeholder privacy page for the locomotive-style build. Replace with your final policy before launch."}],["$","$L2",null,{"href":"/","className":"mt-10 inline-flex text-[11px] uppercase tracking-[0.28em] text-[#e8e8e8] hover:text-white","children":"← Back home"}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"V0suUKJbl1QkHUJ73rM2e"}
+5:null
